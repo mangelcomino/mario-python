@@ -1,6 +1,7 @@
 import pygame,sys
 from settings import *
 from tile import Tile
+from level import Level
 
 #pygame setup
 pygame.init()
@@ -8,7 +9,7 @@ pygame.init()
 screen = pygame.display.set_mode((screen_with,screen_height))
 clock = pygame.time.Clock()
 fps = 60
-test_tile = pygame.sprite.Group(Tile((100,100),200))
+level=Level(level_map,screen)
 
 while True:
     for event in pygame.event.get():
@@ -16,8 +17,7 @@ while True:
             pygame.quit()
             sys.exit()
     screen.fill('black')
-
-    test_tile.draw(screen)
+    level.run()
     
     pygame.display.update()
     clock.tick(fps)
